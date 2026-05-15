@@ -1,111 +1,267 @@
-:root {
-  --text: #6b6375;
-  --text-h: #08060d;
-  --bg: #fff;
-  --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
-  --social-bg: rgba(244, 243, 236, 0.5);
-  --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+/* =========================
+   RESET
+========================= */
 
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --mono: ui-monospace, Consolas, monospace;
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
 
-  font: 18px/145% var(--sans);
-  letter-spacing: 0.18px;
-  color-scheme: light dark;
-  color: var(--text);
-  background: var(--bg);
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+html{
+  scroll-behavior:smooth;
+}
 
-  @media (max-width: 1024px) {
-    font-size: 16px;
+body{
+  font-family:'Inter',sans-serif;
+  background:#050505;
+  color:#ffffff;
+  overflow-x:hidden;
+}
+
+/* =========================
+   ROOT COLORS
+========================= */
+
+:root{
+
+  --bg-primary:#050505;
+  --bg-secondary:#111111;
+
+  --card-bg:rgba(255,255,255,0.05);
+
+  --gold-primary:#F5B041;
+  --gold-light:#FFD36E;
+  --orange-primary:#FF8A00;
+
+  --text-primary:#FFFFFF;
+  --text-secondary:#B8B8C2;
+
+  --border-light:rgba(255,255,255,0.08);
+
+  --premium-gradient:
+  linear-gradient(
+    135deg,
+    #F5B041 0%,
+    #FF8A00 50%,
+    #FFD36E 100%
+  );
+
+  --glass-blur:blur(14px);
+
+  --gold-shadow:
+  0 0 20px rgba(245,176,65,0.18),
+  0 0 45px rgba(245,176,65,0.08);
+
+}
+
+/* =========================
+   GLOBAL STYLES
+========================= */
+
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+
+  background:
+  radial-gradient(
+    circle at top left,
+    rgba(245,176,65,0.12),
+    transparent 30%
+  ),
+  radial-gradient(
+    circle at bottom right,
+    rgba(255,138,0,0.10),
+    transparent 30%
+  );
+
+  z-index:-2;
+}
+
+/* =========================
+   CUSTOM SCROLLBAR
+========================= */
+
+::-webkit-scrollbar{
+  width:10px;
+}
+
+::-webkit-scrollbar-track{
+  background:#0c0c0c;
+}
+
+::-webkit-scrollbar-thumb{
+  background:linear-gradient(
+    to bottom,
+    #F5B041,
+    #FF8A00
+  );
+
+  border-radius:20px;
+}
+
+/* =========================
+   TYPOGRAPHY
+========================= */
+
+h1,h2,h3,h4,h5,h6{
+  font-family:'Space Grotesk',sans-serif;
+}
+
+a{
+  text-decoration:none;
+  color:inherit;
+}
+
+ul{
+  list-style:none;
+}
+
+/* =========================
+   CONTAINER
+========================= */
+
+.container{
+  width:90%;
+  max-width:1400px;
+  margin:auto;
+}
+
+/* =========================
+   GLASS EFFECT
+========================= */
+
+.glass{
+  background:var(--card-bg);
+
+  backdrop-filter:var(--glass-blur);
+
+  border:1px solid var(--border-light);
+
+  box-shadow:var(--gold-shadow);
+
+  border-radius:28px;
+}
+
+/* =========================
+   BUTTON STYLE
+========================= */
+
+.primary-btn{
+  padding:14px 30px;
+
+  border:none;
+
+  border-radius:18px;
+
+  background:var(--premium-gradient);
+
+  color:#000;
+
+  font-weight:700;
+
+  cursor:pointer;
+
+  transition:0.4s ease;
+}
+
+.primary-btn:hover{
+  transform:translateY(-5px) scale(1.02);
+
+  box-shadow:
+  0 0 20px rgba(245,176,65,0.35),
+  0 0 50px rgba(245,176,65,0.18);
+}
+
+/* =========================
+   SECTION SPACING
+========================= */
+
+section{
+  padding:120px 0;
+}
+
+/* =========================
+   GLOW BLOBS
+========================= */
+
+.glow{
+  position:absolute;
+
+  border-radius:50%;
+
+  filter:blur(120px);
+
+  z-index:-1;
+}
+
+.glow-1{
+  width:300px;
+  height:300px;
+
+  background:#F5B041;
+
+  top:-100px;
+  left:-100px;
+
+  opacity:0.18;
+}
+
+.glow-2{
+  width:350px;
+  height:350px;
+
+  background:#FF8A00;
+
+  bottom:-100px;
+  right:-100px;
+
+  opacity:0.15;
+}
+
+/* =========================
+   CARD HOVER
+========================= */
+
+.hover-card{
+  transition:0.45s ease;
+}
+
+.hover-card:hover{
+  transform:
+  translateY(-10px)
+  scale(1.02);
+
+  box-shadow:
+  0 0 25px rgba(245,176,65,0.18),
+  0 0 60px rgba(245,176,65,0.10);
+}
+
+/* =========================
+   TEXT GRADIENT
+========================= */
+
+.gradient-text{
+  background:var(--premium-gradient);
+
+  -webkit-background-clip:text;
+
+  -webkit-text-fill-color:transparent;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:768px){
+
+  section{
+    padding:80px 0;
   }
-}
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
+  .container{
+    width:92%;
   }
 
-  #social .button-icon {
-    filter: invert(1) brightness(2);
-  }
-}
-
-body {
-  margin: 0;
-}
-
-#root {
-  width: 1126px;
-  max-width: 100%;
-  margin: 0 auto;
-  text-align: center;
-  border-inline: 1px solid var(--border);
-  min-height: 100svh;
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
-}
-
-h1,
-h2 {
-  font-family: var(--heading);
-  font-weight: 500;
-  color: var(--text-h);
-}
-
-h1 {
-  font-size: 56px;
-  letter-spacing: -1.68px;
-  margin: 32px 0;
-  @media (max-width: 1024px) {
-    font-size: 36px;
-    margin: 20px 0;
-  }
-}
-h2 {
-  font-size: 24px;
-  line-height: 118%;
-  letter-spacing: -0.24px;
-  margin: 0 0 8px;
-  @media (max-width: 1024px) {
-    font-size: 20px;
-  }
-}
-p {
-  margin: 0;
-}
-
-code,
-.counter {
-  font-family: var(--mono);
-  display: inline-flex;
-  border-radius: 4px;
-  color: var(--text-h);
-}
-
-code {
-  font-size: 15px;
-  line-height: 135%;
-  padding: 4px 8px;
-  background: var(--code-bg);
 }
